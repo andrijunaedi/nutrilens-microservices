@@ -38,11 +38,12 @@ This project is a monorepo containing three distinct services: UserService, Prod
 ## Project Structure
 
 ```
-monorepo-project
+nutrilens-microservices
 ├── services
 │   ├── UserService
 │   ├── ProductService
 │   └── ConsumptionService
+├── docs
 ├── package.json
 ├── README.md
 └── .gitignore
