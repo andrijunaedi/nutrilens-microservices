@@ -7,6 +7,11 @@ async function userRoutes(fastify, options) {
   fastify.put('/users/:id', { schema: userSchemas.updateUser }, userController.updateUser);
   fastify.delete('/users/:id', { schema: userSchemas.deleteUser }, userController.deleteUser);
   fastify.get('/users', { schema: userSchemas.getAllUsers }, userController.getAllUsers);
+  fastify.get(
+    '/users/:id/consumptions',
+    { schema: userSchemas.getUserConsumptions },
+    userController.getUserConsumptions
+  );
 }
 
 module.exports = userRoutes;

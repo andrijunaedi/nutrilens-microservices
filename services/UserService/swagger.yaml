@@ -1,109 +1,143 @@
-openapi: 3.0.0
+swagger: '2.0'
 info:
-  title: User Service API
-  description: API for managing users in the system.
+  description: API documentation for UserService
   version: 1.0.0
-servers:
-  - url: http://localhost:8000
+  title: User Service API
+host: localhost:8000
+basePath: /api/v1
+schemes:
+  - http
 paths:
   /users:
     get:
       summary: Get all users
+      description: Retrieve a list of all users
       responses:
-        '200':
+        200:
           description: A list of users
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
     post:
       summary: Create a new user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
+      description: Add a new user to the system
+      parameters:
+        - in: body
+          name: user
+          description: User object to be created
+          required: true
+          schema:
+            $ref: '#/definitions/User'
       responses:
-        '201':
-          description: User created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+        201:
+          description: User created successfully
+          schema:
+            $ref: '#/definitions/User'
   /users/{id}:
     get:
       summary: Get a user by ID
+      description: Retrieve a single user by their ID
       parameters:
         - name: id
           in: path
           required: true
-          description: The ID of the user
-          schema:
-            type: string
+          type: integer
       responses:
-        '200':
-          description: User found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
+        200:
+          description: A single user
+          schema:
+            $ref: '#/definitions/User'
+        404:
           description: User not found
     put:
-      summary: Update a user by ID
+      summary: Update a user
+      description: Update an existing user
       parameters:
         - name: id
           in: path
           required: true
-          description: The ID of the user
+          type: integer
+        - in: body
+          name: user
+          description: Updated user object
+          required: true
           schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
+            $ref: '#/definitions/User'
       responses:
-        '200':
-          description: User updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
+        200:
+          description: User updated successfully
+          schema:
+            $ref: '#/definitions/User'
+        404:
           description: User not found
     delete:
-      summary: Delete a user by ID
+      summary: Delete a user
+      description: Remove a user from the system
       parameters:
         - name: id
           in: path
           required: true
-          description: The ID of the user
-          schema:
-            type: string
+          type: integer
       responses:
-        '204':
-          description: User deleted
-        '404':
+        204:
+          description: User deleted successfully
+        404:
           description: User not found
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+  /users/{id}/consumptions:
+    get:
+      summary: Get user consumptions by ID
+      description: Retrieve a list of consumptions for a specific user by their ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID of the user
+      responses:
+        200:
+          description: A list of consumptions for the user
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Consumption'
+        404:
+          description: User not found
+
+definitions:
+  User:
+    type: object
+    required:
+      - id
+      - name
+      - email
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: 'John Doe'
+      email:
+        type: string
+        example: 'john.doe@example.com'
+  Consumption:
+    type: object
+    required:
+      - id
+      - userId
+      - item
+      - quantity
+    properties:
+      id:
+        type: integer
+        example: 1
+      userId:
+        type: integer
+        example: 1
+      item:
+        type: string
+        example: 'Apple'
+      quantity:
+        type: integer
+        example: 3

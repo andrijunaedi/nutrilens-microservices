@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel');
+const axios = require('axios');
 
 module.exports = {
   async createUser(request, reply) {
@@ -43,5 +44,20 @@ module.exports = {
   async getAllUsers(request, reply) {
     const result = await userModel.getAllUsers();
     reply.send(result);
+  },
+
+  async getUserConsumptions(request, reply) {
+    const { id } = request.params;
+
+    try {
+      const response = await axios.get(`http://localhost:8002/consumptions?user_id=${id}`);
+      reply.send(response.data);
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        reply.code(404).send({ error: 'Consumptions not found for the user' });
+      } else {
+        reply.code(500).send({ error: 'Internal Server Error' });
+      }
+    }
   },
 };
