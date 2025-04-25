@@ -1,0 +1,39 @@
+{
+  "name": "monorepo-project",
+  "version": "1.0.0",
+  "description": "A monorepo for managing multiple services including UserService, ProductService, and ConsumptionService.",
+  "main": "index.js",
+  "scripts": {
+    "start:user": "node services/UserService/src/app.js",
+    "start:product": "node services/ProductService/src/app.js",
+    "start:consumption": "node services/ConsumptionService/src/app.js",
+    "start": "concurrently -n \"User,Product,Consumption\" -c \"blue,green,magenta\" \"npm run start:user\" \"npm run start:product\" \"npm run start:consumption\"",
+    "dev:user": "nodemon services/UserService/src/app.js",
+    "dev:product": "nodemon services/ProductService/src/app.js",
+    "dev:consumption": "nodemon services/ConsumptionService/src/app.js",
+    "dev": "concurrently -n \"User,Product,Consumption\" -c \"blue,green,magenta\" \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:consumption\""
+  },
+  "dependencies": {
+    "@fastify/swagger": "^9.5.0",
+    "@fastify/swagger-ui": "^5.2.2",
+    "axios": "^1.9.0",
+    "concurrently": "^6.0.0",
+    "fastify": "^5.3.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/monorepo-project.git"
+  },
+  "keywords": [
+    "monorepo",
+    "fastify",
+    "sqlite3",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

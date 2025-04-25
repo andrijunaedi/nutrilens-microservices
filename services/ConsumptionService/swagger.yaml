@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  description: API documentation for the Consumption Service, which tracks daily sugar and salt consumption for users.
+  version: 1.0.0
+  title: Consumption Service API
+host: localhost:8002
+basePath: /api
+schemes:
+  - http
+paths:
+  /consumptions:
+    get:
+      summary: Get all consumptions
+      description: Retrieve a list of all consumption records.
+      responses:
+        200:
+          description: A list of consumptions
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Consumption'
+    post:
+      summary: Create a new consumption
+      description: Add a new consumption record.
+      parameters:
+        - in: body
+          name: consumption
+          description: The consumption record to create
+          required: true
+          schema:
+            $ref: '#/definitions/Consumption'
+      responses:
+        201:
+          description: Consumption created
+          schema:
+            $ref: '#/definitions/Consumption'
+
+  /consumptions/{id}:
+    get:
+      summary: Get a consumption by ID
+      description: Retrieve a specific consumption record by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Consumption record
+          schema:
+            $ref: '#/definitions/Consumption'
+        404:
+          description: Consumption not found
+    put:
+      summary: Update a consumption
+      description: Update an existing consumption record.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - in: body
+          name: consumption
+          description: The updated consumption record
+          required: true
+          schema:
+            $ref: '#/definitions/Consumption'
+      responses:
+        200:
+          description: Consumption updated
+          schema:
+            $ref: '#/definitions/Consumption'
+        404:
+          description: Consumption not found
+    delete:
+      summary: Delete a consumption
+      description: Remove a consumption record by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        204:
+          description: Consumption deleted
+        404:
+          description: Consumption not found
+
+definitions:
+  Consumption:
+    type: object
+    properties:
+      id:
+        type: integer
+      userId:
+        type: integer
+      date:
+        type: string
+        format: date
+      sugar:
+        type: number
+        format: float
+      salt:
+        type: number
+        format: float
+    required:
+      - userId
+      - date
+      - sugar
+      - salt

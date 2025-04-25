@@ -1,0 +1,25 @@
+{
+  "name": "consumption-service",
+  "version": "1.0.0",
+  "description": "Service for managing daily sugar and salt consumption records.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "keywords": [
+    "consumption",
+    "service",
+    "fastify",
+    "sqlite"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

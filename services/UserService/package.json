@@ -1,0 +1,20 @@
+{
+  "name": "UserService",
+  "version": "1.0.0",
+  "description": "Service for managing users in the consumption tracking system.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "sqlite3": "^5.0.0",
+    "fastify-swagger": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
