@@ -2,6 +2,15 @@
 
 This project is a monorepo containing three distinct services: UserService, ProductService, and ConsumptionService. Each service is built using Node.js with the Fastify framework and utilizes SQLite3 for data storage. The services are designed to handle CRUD operations and are isolated in their respective directories.
 
+## Diagram
+
+### Architecture Microservices
+
+![](./docs/img/architecture.png)
+
+### Sequence Diagram
+![](./docs/img/sequence.png)
+
 ## Services Overview
 
 ### 1. UserService
@@ -43,7 +52,7 @@ monorepo-project
 1. **Clone the Repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/andrijunaedi/nutrilens-microservices.git
    cd nutrilens-microservices
    ```
 

@@ -1,0 +1,47 @@
+@startuml
+skin rose
+actor User
+
+participant "UserService" as US
+participant "ProductService" as PS
+participant "ConsumptionService" as CS
+
+' Step 1: User creates an account
+User -> US: POST /users
+US -> US: Create user in database
+US --> User: 201 Created
+
+' Step 2: User adds a new product
+User -> PS: POST /products
+PS -> PS: Create product in database
+PS --> User: 201 Created
+
+' Step 3: User adds a new consumption
+User -> CS: POST /consumptions
+CS -> US: GET /users/:id
+US -> US: Fetch user by ID
+US --> CS: 200 OK / 404 Not Found
+CS -> PS: GET /products/:id
+PS -> PS: Fetch product by ID
+PS --> CS: 200 OK / 404 Not Found
+CS -> CS: Create consumption in database
+CS --> User: 201 Created / 404 Not Found
+
+' Step 4: User views consumption details by ID
+User -> CS: GET /consumptions/:id
+CS -> CS: Fetch consumption by ID
+CS -> US: GET /users/:id
+US -> US: Fetch user by ID
+US --> CS: 200 OK / 404 Not Found
+CS -> PS: GET /products/:id
+PS -> PS: Fetch product by ID
+PS --> CS: 200 OK / 404 Not Found
+CS --> User: 200 OK / 404 Not Found
+
+' Step 5: User views consumption list by user_id
+User -> US: GET /users/:id/consumptions
+US -> CS: GET /consumptions?user_id={id}
+CS -> CS: Fetch consumptions by user_id
+CS --> US: 200 OK / 404 Not Found
+US --> User: 200 OK / 404 Not Found
+@enduml

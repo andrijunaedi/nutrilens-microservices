@@ -1,0 +1,61 @@
+@startuml
+skin rose
+!pragma layout smetana
+allowmixing
+
+' Define components
+class "UserService\nPort: 8000" as US {
+  + POST /users
+  + GET /users/:id
+  + PUT /users/:id
+  + DELETE /users/:id
+  + GET /users
+  + GET /users/:id/consumptions
+}
+
+class "ProductService\nPort: 8001" as PS {
+  + POST /products
+  + GET /products/:id
+  + PUT /products/:id
+  + DELETE /products/:id
+  + GET /products
+}
+
+class "ConsumptionService\nPort: 8002" as CS {
+  + POST /consumptions
+  + GET /consumptions/:id
+  + PUT /consumptions/:id
+  + DELETE /consumptions/:id
+  + GET /consumptions
+  + GET /consumptions?user_id={id}
+  + GET /consumptions?product_id={id}
+}
+
+' Define interactions
+US --> CS : "calls /consumptions?user_id={id}\nfor user consumption data"
+CS --> US : "calls /users/:id\nto validate user existence"
+CS --> PS : "calls /products/:id\nto validate product existence"
+
+' Add client
+actor Client
+Client --> US : "User operations"
+Client --> PS : "Product operations"
+Client --> CS : "Consumption operations"
+
+' Add notes
+note bottom of US
+  Manages user data
+  Provides user-related endpoints
+end note
+
+note bottom of PS
+  Manages product catalog
+  Contains nutritional information
+end note
+
+note bottom of CS
+  Tracks user consumption of products
+  Calculates daily sugar and salt intake
+  Depends on both User and Product services
+end note
+@enduml
