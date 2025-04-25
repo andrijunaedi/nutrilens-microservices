@@ -73,7 +73,18 @@ nutrilens-microservices
    npm install
    ```
 
-3. **Run the Services**
+3. **Initialize Database**
+   To populate the database with sample data:
+   ```bash
+   npm run seed
+   ```
+   
+   To reset and refresh the database:
+   ```bash
+   npm run db:refresh
+   ```
+
+4. **Run the Services**
    Each service can be started independently on its designated port:
 
    - Start UserService:
@@ -95,16 +106,26 @@ nutrilens-microservices
    npm run start
    ```
 
-4. **Access the APIs**
+5. **Access the APIs**
 
    - UserService: `http://localhost:8000`
    - ProductService: `http://localhost:8001`
    - ConsumptionService: `http://localhost:8002`
 
-5. **Access the API Documentation (Swagger)**
+6. **Access the API Documentation (Swagger)**
    - UserService: `http://localhost:8000/docs#/`
    - ProductService: `http://localhost:8001/docs#/`
    - ConsumptionService: `http://localhost:8002/docs#/`
+
+## API Testing with Postman
+You can test all APIs using our prepared Postman collection:
+
+1. Download and install [Postman](https://www.postman.com/downloads/)
+2. Import the collection file from `docs/postman.json`
+3. The collection includes test endpoints for all services:
+   - UserService (Port 8000)
+   - ProductService (Port 8001)
+   - ConsumptionService (Port 8002)
 
 ## Integration
 
