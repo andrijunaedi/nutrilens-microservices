@@ -6,9 +6,9 @@ This project is a monorepo containing three distinct services: UserService, Prod
 
 This project is developed and maintained by the NutriLens team:
 
-- **Andri Junaedi** - @andrijunaedi
-- **Glen Davis Kusuma** - @glenkusuma
-- **Muhammad Hanif Aulia Rasyid** - @HanifAR24
+- **Andri Junaedi** - [@andrijunaedi](https://github.com/andrijunaedi)
+- **Glen Davis Kusuma** - [@glenkusuma](https://github.com/glenkusuma)
+- **Muhammad Hanif Aulia Rasyid** - [@HanifAR24](https://github.com/HanifAR24)
 
 ## Diagram
 
