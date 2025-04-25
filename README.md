@@ -9,6 +9,7 @@ This project is a monorepo containing three distinct services: UserService, Prod
 ![](./docs/img/architecture.png)
 
 ### Sequence Diagram
+
 ![](./docs/img/sequence.png)
 
 ## Services Overview
@@ -86,9 +87,15 @@ monorepo-project
    ```
 
 4. **Access the APIs**
+
    - UserService: `http://localhost:8000`
    - ProductService: `http://localhost:8001`
    - ConsumptionService: `http://localhost:8002`
+
+5. **Access the API Documentation (Swagger)**
+   - UserService: `http://localhost:8000/docs#/`
+   - ProductService: `http://localhost:8001/docs#/`
+   - ConsumptionService: `http://localhost:8002/docs#/`
 
 ## Integration
 
