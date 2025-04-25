@@ -82,7 +82,7 @@ nutrilens-microservices
      ```
    - Start ProductService:
      ```bash
-     npm run start:production
+     npm run start:product
      ```
    - Start ConsumptionService:
      ```bash
