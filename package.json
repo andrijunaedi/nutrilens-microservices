@@ -11,7 +11,15 @@
     "dev:user": "nodemon services/UserService/src/app.js",
     "dev:product": "nodemon services/ProductService/src/app.js",
     "dev:consumption": "nodemon services/ConsumptionService/src/app.js",
-    "dev": "concurrently -n \"User,Product,Consumption\" -c \"blue,green,magenta\" \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:consumption\""
+    "dev": "concurrently -n \"User,Product,Consumption\" -c \"blue,green,magenta\" \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:consumption\"",
+    "seed:user": "cd services/UserService && npm run seed",
+    "seed:product": "cd services/ProductService && npm run seed",
+    "seed:consumption": "cd services/ConsumptionService && npm run seed",
+    "seed": "npm run seed:user && npm run seed:product && npm run seed:consumption",
+    "db:refresh:user": "cd services/UserService && npm run db:refresh",
+    "db:refresh:product": "cd services/ProductService && npm run db:refresh",
+    "db:refresh:consumption": "cd services/ConsumptionService && npm run db:refresh",
+    "db:refresh": "npm run db:refresh:user && npm run db:refresh:product && npm run db:refresh:consumption"
   },
   "dependencies": {
     "@fastify/swagger": "^9.5.0",

@@ -5,7 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "seed": "node src/db/seeder.js",
+    "db:refresh": "rm -f src/db/database.sqlite && npm run seed"
   },
   "dependencies": {
     "fastify": "^5.0.0",
