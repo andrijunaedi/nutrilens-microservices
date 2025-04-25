@@ -21,7 +21,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\"\n}",
+              "raw": "{\n  \"name\": \"Glen\",\n  \"email\": \"glen@gmail.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -62,7 +62,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"New Name\",\n  \"email\": \"new@email.com\"\n}",
+              "raw": "{\n  \"name\": \"Glen Kusuma\",\n  \"email\": \"kusumaglen@gmail.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -134,7 +134,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Apple Juice\",\n  \"calories\": 100\n}",
+              "raw": "{\n  \"name\": \"Indomie Goreng\",\n  \"description\": \"A popular instant noodle brand from Indonesia.\"\n, \"sugar_intake\": 8\n, \"salt_intake\": 1.8\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -175,7 +175,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Orange Juice\",\n  \"calories\": 120\n}",
+              "raw": "{\n  \"name\": \"Indomie Goreng Cabe Ijo\",\n  \"description\": \"A popular instant noodle brand from Indonesia.\"\n, \"sugar_intake\": 8\n, \"salt_intake\": 1.8\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -234,7 +234,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"user_id\": 1,\n  \"product_id\": 1,\n  \"qty\": 1,\n  \"date\": \"2025-04-25\"\n}",
+              "raw": "{\n  \"user_id\": 1,\n  \"product_id\": 1,\n  \"qty\": 2,\n  \"date\": \"2025-04-25\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -275,7 +275,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"qty\": 2,\n  \"date\": \"2025-04-25\"\n}",
+              "raw": "{\n  \"qty\": 1,\n  \"date\": \"2025-04-25\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
