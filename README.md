@@ -2,6 +2,14 @@
 
 This project is a monorepo containing three distinct services: UserService, ProductService, and ConsumptionService. Each service is built using Node.js with the Fastify framework and utilizes SQLite3 for data storage. The services are designed to handle CRUD operations and are isolated in their respective directories.
 
+## Team Developers
+
+This project is developed and maintained by the NutriLens team:
+
+- **Andri Junaedi** - @andrijunaedi
+- **Glen Davis Kusuma** - @glenkusuma
+- **Muhammad Hanif Aulia Rasyid** - @HanifAR24
+
 ## Diagram
 
 ### Architecture Microservices
