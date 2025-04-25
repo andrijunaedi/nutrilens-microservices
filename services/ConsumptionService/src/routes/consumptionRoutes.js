@@ -25,7 +25,10 @@ async function consumptionRoutes(fastify, options) {
   fastify.get(
     '/consumptions',
     { schema: consumptionSchemas.getAllConsumptions },
-    consumptionController.getAllConsumptions
+    async (request, reply) => {
+      const { user_id, product_id } = request.query;
+      return consumptionController.getAllConsumptions(request, reply, user_id, product_id);
+    }
   );
 }
 

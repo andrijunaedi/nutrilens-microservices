@@ -75,4 +75,24 @@ module.exports = {
       });
     });
   },
+
+  getConsumptionsByUserId(user_id) {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM consumptions WHERE user_id = ?';
+      db.all(query, [user_id], (err, rows) => {
+        if (err) return reject(err);
+        resolve(rows);
+      });
+    });
+  },
+
+  getConsumptionsByProductId(product_id) {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM consumptions WHERE product_id = ?';
+      db.all(query, [product_id], (err, rows) => {
+        if (err) return reject(err);
+        resolve(rows);
+      });
+    });
+  },
 };

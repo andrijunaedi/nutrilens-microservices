@@ -1,44 +1,49 @@
 swagger: '2.0'
 info:
-  description: API documentation for the Consumption Service, which tracks daily sugar and salt consumption for users.
+  description: API documentation for ConsumptionService
   version: 1.0.0
   title: Consumption Service API
 host: localhost:8002
-basePath: /api
+basePath: /api/v1
 schemes:
   - http
 paths:
   /consumptions:
     get:
       summary: Get all consumptions
-      description: Retrieve a list of all consumption records.
+      description: Retrieve a list of all consumption records
+      parameters:
+        - name: user_id
+          in: query
+          required: false
+          type: integer
+          description: Filter consumptions by user ID
       responses:
         200:
-          description: A list of consumptions
+          description: A list of consumption records
           schema:
             type: array
             items:
               $ref: '#/definitions/Consumption'
     post:
-      summary: Create a new consumption
-      description: Add a new consumption record.
+      summary: Create a new consumption record
+      description: Add a new consumption record to the system
       parameters:
         - in: body
           name: consumption
-          description: The consumption record to create
+          description: Consumption object to be created
           required: true
           schema:
             $ref: '#/definitions/Consumption'
       responses:
         201:
-          description: Consumption created
+          description: Consumption record created successfully
           schema:
             $ref: '#/definitions/Consumption'
-
   /consumptions/{id}:
     get:
-      summary: Get a consumption by ID
-      description: Retrieve a specific consumption record by its ID.
+      summary: Get a consumption record by ID
+      description: Retrieve a single consumption record by its ID
       parameters:
         - name: id
           in: path
@@ -46,14 +51,14 @@ paths:
           type: integer
       responses:
         200:
-          description: Consumption record
+          description: A single consumption record
           schema:
             $ref: '#/definitions/Consumption'
         404:
-          description: Consumption not found
+          description: Consumption record not found
     put:
-      summary: Update a consumption
-      description: Update an existing consumption record.
+      summary: Update a consumption record
+      description: Update an existing consumption record
       parameters:
         - name: id
           in: path
@@ -61,20 +66,20 @@ paths:
           type: integer
         - in: body
           name: consumption
-          description: The updated consumption record
+          description: Updated consumption object
           required: true
           schema:
             $ref: '#/definitions/Consumption'
       responses:
         200:
-          description: Consumption updated
+          description: Consumption record updated successfully
           schema:
             $ref: '#/definitions/Consumption'
         404:
-          description: Consumption not found
+          description: Consumption record not found
     delete:
-      summary: Delete a consumption
-      description: Remove a consumption record by its ID.
+      summary: Delete a consumption record
+      description: Remove a consumption record from the system
       parameters:
         - name: id
           in: path
@@ -82,29 +87,33 @@ paths:
           type: integer
       responses:
         204:
-          description: Consumption deleted
+          description: Consumption record deleted successfully
         404:
-          description: Consumption not found
+          description: Consumption record not found
 
 definitions:
   Consumption:
     type: object
+    required:
+      - id
+      - user_id
+      - product_id
+      - date
+      - quantity
     properties:
       id:
         type: integer
-      userId:
+        example: 1
+      user_id:
         type: integer
+        example: 1
+      product_id:
+        type: integer
+        example: 1
       date:
         type: string
         format: date
-      sugar:
+        example: '2023-10-01'
+      quantity:
         type: number
-        format: float
-      salt:
-        type: number
-        format: float
-    required:
-      - userId
-      - date
-      - sugar
-      - salt
+        example: 2.5

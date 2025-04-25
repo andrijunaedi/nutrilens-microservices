@@ -2,21 +2,12 @@ module.exports = {
   createConsumption: {
     body: {
       type: 'object',
-      required: [
-        'user_id',
-        'product_id',
-        'date',
-        'quantity',
-        'sugar_total_intake',
-        'salt_total_intake',
-      ],
+      required: ['user_id', 'product_id', 'date', 'quantity'],
       properties: {
         user_id: { type: 'number' },
         product_id: { type: 'number' },
         date: { type: 'string', format: 'date' },
         quantity: { type: 'number' },
-        sugar_total_intake: { type: 'number' },
-        salt_total_intake: { type: 'number' },
       },
     },
     response: {
@@ -28,8 +19,6 @@ module.exports = {
           product_id: { type: 'number' },
           date: { type: 'string' },
           quantity: { type: 'number' },
-          sugar_total_intake: { type: 'number' },
-          salt_total_intake: { type: 'number' },
         },
       },
     },
@@ -51,8 +40,28 @@ module.exports = {
           product_id: { type: 'number' },
           date: { type: 'string' },
           quantity: { type: 'number' },
-          sugar_total_intake: { type: 'number' },
-          salt_total_intake: { type: 'number' },
+          sugar_intake: { type: 'number' },
+          salt_intake: { type: 'number' },
+          user: {
+            type: 'object',
+            properties: {
+              id: { type: 'number' },
+              name: { type: 'string' },
+              email: { type: 'string' },
+              age: { type: 'number' },
+              gender: { type: 'string' },
+            },
+          },
+          product: {
+            type: 'object',
+            properties: {
+              id: { type: 'number' },
+              name: { type: 'string' },
+              description: { type: 'string' },
+              sugar_intake: { type: 'number' },
+              salt_intake: { type: 'number' },
+            },
+          },
         },
       },
     },
@@ -67,21 +76,12 @@ module.exports = {
     },
     body: {
       type: 'object',
-      required: [
-        'user_id',
-        'product_id',
-        'date',
-        'quantity',
-        'sugar_total_intake',
-        'salt_total_intake',
-      ],
+      required: ['user_id', 'product_id', 'date', 'quantity'],
       properties: {
         user_id: { type: 'number' },
         product_id: { type: 'number' },
         date: { type: 'string', format: 'date' },
         quantity: { type: 'number' },
-        sugar_total_intake: { type: 'number' },
-        salt_total_intake: { type: 'number' },
       },
     },
     response: {
@@ -93,8 +93,6 @@ module.exports = {
           product_id: { type: 'number' },
           date: { type: 'string' },
           quantity: { type: 'number' },
-          sugar_total_intake: { type: 'number' },
-          salt_total_intake: { type: 'number' },
         },
       },
     },
@@ -118,19 +116,48 @@ module.exports = {
   },
 
   getAllConsumptions: {
+    description: 'Retrieve all consumption records, optionally filtered by user_id or product_id.',
+    querystring: {
+      type: 'object',
+      properties: {
+        user_id: { type: 'integer', description: 'Filter by user ID' },
+        product_id: { type: 'integer', description: 'Filter by product ID' },
+      },
+      additionalProperties: false,
+    },
     response: {
       200: {
         type: 'array',
         items: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            user_id: { type: 'number' },
-            product_id: { type: 'number' },
+            id: { type: 'integer' },
+            user_id: { type: 'integer' },
+            product_id: { type: 'integer' },
             date: { type: 'string' },
             quantity: { type: 'number' },
-            sugar_total_intake: { type: 'number' },
-            salt_total_intake: { type: 'number' },
+            sugar_intake: { type: 'number' },
+            salt_intake: { type: 'number' },
+            user: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                name: { type: 'string' },
+                email: { type: 'string' },
+                age: { type: 'number' },
+                gender: { type: 'string' },
+              },
+            },
+            product: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                name: { type: 'string' },
+                description: { type: 'string' },
+                sugar_intake: { type: 'number' },
+                salt_intake: { type: 'number' },
+              },
+            },
           },
         },
       },
