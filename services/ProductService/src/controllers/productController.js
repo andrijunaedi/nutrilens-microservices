@@ -2,8 +2,8 @@ const productModel = require('../models/productModel');
 
 module.exports = {
   async createProduct(request, reply) {
-    const { name, price } = request.body;
-    const result = await productModel.createProduct(name, price);
+    const { name, description, sugar_intake, salt_intake } = request.body;
+    const result = await productModel.createProduct(name, description, sugar_intake, salt_intake);
     reply.send(result);
   },
 
@@ -19,13 +19,19 @@ module.exports = {
 
   async updateProduct(request, reply) {
     const { id } = request.params;
-    const { name, price } = request.body;
+    const { name, description, sugar_intake, salt_intake } = request.body;
     const existingProduct = await productModel.getProductById(id);
     if (!existingProduct) {
       reply.code(404).send({ error: 'Product not found' });
       return;
     }
-    const result = await productModel.updateProduct(id, name, price);
+    const result = await productModel.updateProduct(
+      id,
+      name,
+      description,
+      sugar_intake,
+      salt_intake
+    );
     reply.send(result);
   },
 

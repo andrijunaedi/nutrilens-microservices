@@ -92,18 +92,24 @@ definitions:
     required:
       - id
       - name
-      - price
+      - description
+      - sugar_intake
+      - salt_intake
     properties:
       id:
         type: integer
         example: 1
       name:
         type: string
-        example: "Sugar"
-      price:
+        example: 'Sugar'
+      description:
+        type: string
+        example: 'A bag of sugar'
+      sugar_intake:
         type: number
         format: float
         example: 1.99
-      description:
-        type: string
-        example: "A bag of sugar"
+      salt_intake:
+        type: number
+        format: float
+        example: 0.5

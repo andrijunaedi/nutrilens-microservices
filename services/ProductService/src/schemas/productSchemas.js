@@ -2,10 +2,12 @@ module.exports = {
   createProduct: {
     body: {
       type: 'object',
-      required: ['name', 'price'],
+      required: ['name', 'description', 'sugar_intake', 'salt_intake'],
       properties: {
         name: { type: 'string' },
-        price: { type: 'number' },
+        description: { type: 'string' },
+        sugar_intake: { type: 'number' },
+        salt_intake: { type: 'number' },
       },
     },
     response: {
@@ -14,7 +16,9 @@ module.exports = {
         properties: {
           id: { type: 'number' },
           name: { type: 'string' },
-          price: { type: 'number' },
+          description: { type: 'string' },
+          sugar_intake: { type: 'number' },
+          salt_intake: { type: 'number' },
         },
       },
     },
@@ -33,7 +37,9 @@ module.exports = {
         properties: {
           id: { type: 'number' },
           name: { type: 'string' },
-          price: { type: 'number' },
+          description: { type: 'string' },
+          sugar_intake: { type: 'number' },
+          salt_intake: { type: 'number' },
         },
       },
     },
@@ -48,10 +54,12 @@ module.exports = {
     },
     body: {
       type: 'object',
-      required: ['name', 'price'],
+      required: ['name', 'description', 'sugar_intake', 'salt_intake'],
       properties: {
         name: { type: 'string' },
-        price: { type: 'number' },
+        description: { type: 'string' },
+        sugar_intake: { type: 'number' },
+        salt_intake: { type: 'number' },
       },
     },
     response: {
@@ -60,7 +68,9 @@ module.exports = {
         properties: {
           id: { type: 'number' },
           name: { type: 'string' },
-          price: { type: 'number' },
+          description: { type: 'string' },
+          sugar_intake: { type: 'number' },
+          salt_intake: { type: 'number' },
         },
       },
     },
@@ -92,7 +102,9 @@ module.exports = {
           properties: {
             id: { type: 'number' },
             name: { type: 'string' },
-            price: { type: 'number' },
+            description: { type: 'string' },
+            sugar_intake: { type: 'number' },
+            salt_intake: { type: 'number' },
           },
         },
       },

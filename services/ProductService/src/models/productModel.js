@@ -17,17 +17,20 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    price REAL NOT NULL
+    description TEXT NOT NULL,
+    sugar_intake REAL NOT NULL,
+    salt_intake REAL NOT NULL
   )`);
 });
 
 module.exports = {
-  createProduct(name, price) {
+  createProduct(name, description, sugar_intake, salt_intake) {
     return new Promise((resolve, reject) => {
-      const query = 'INSERT INTO products (name, price) VALUES (?, ?)';
-      db.run(query, [name, price], function (err) {
+      const query =
+        'INSERT INTO products (name, description, sugar_intake, salt_intake) VALUES (?, ?, ?, ?)';
+      db.run(query, [name, description, sugar_intake, salt_intake], function (err) {
         if (err) return reject(err);
-        resolve({ id: this.lastID, name, price });
+        resolve({ id: this.lastID, name, description, sugar_intake, salt_intake });
       });
     });
   },
@@ -42,12 +45,13 @@ module.exports = {
     });
   },
 
-  updateProduct(id, name, price) {
+  updateProduct(id, name, description, sugar_intake, salt_intake) {
     return new Promise((resolve, reject) => {
-      const query = 'UPDATE products SET name = ?, price = ? WHERE id = ?';
-      db.run(query, [name, price, id], function (err) {
+      const query =
+        'UPDATE products SET name = ?, description = ?, sugar_intake = ?, salt_intake = ? WHERE id = ?';
+      db.run(query, [name, description, sugar_intake, salt_intake, id], function (err) {
         if (err) return reject(err);
-        resolve({ id, name, price });
+        resolve({ id, name, description, sugar_intake, salt_intake });
       });
     });
   },
